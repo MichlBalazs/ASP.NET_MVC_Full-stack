@@ -1,11 +1,49 @@
 {
   "version": 3,
   "targets": {
-    "net5.0": {}
+    "net5.0": {
+      "GG1RKK_HFT_202324.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/GG1RKK_HFT_202324.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GG1RKK_HFT_202324.Models.dll": {}
+        }
+      },
+      "GG1RKK_HFT_2023241.Repository/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "GG1RKK_HFT_202324.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GG1RKK_HFT_2023241.Repository.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GG1RKK_HFT_2023241.Repository.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "GG1RKK_HFT_202324.Models/1.0.0": {
+      "type": "project",
+      "path": "../GG1RKK_HFT_202324.Models/GG1RKK_HFT_202324.Models.csproj",
+      "msbuildProject": "../GG1RKK_HFT_202324.Models/GG1RKK_HFT_202324.Models.csproj"
+    },
+    "GG1RKK_HFT_2023241.Repository/1.0.0": {
+      "type": "project",
+      "path": "../GG1RKK_HFT_2023241.Repository/GG1RKK_HFT_2023241.Repository.csproj",
+      "msbuildProject": "../GG1RKK_HFT_2023241.Repository/GG1RKK_HFT_2023241.Repository.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net5.0": []
+    "net5.0": [
+      "GG1RKK_HFT_202324.Models >= 1.0.0",
+      "GG1RKK_HFT_2023241.Repository >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\michl\\.nuget\\packages\\": {}
@@ -33,7 +71,14 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\D\\Study\\3FÉLÉV\\HFT\\FELEVES_FELADAT\\GG1RKK_HFT_2023241\\GG1RKK_HFT_202324.Models\\GG1RKK_HFT_202324.Models.csproj": {
+              "projectPath": "C:\\D\\Study\\3FÉLÉV\\HFT\\FELEVES_FELADAT\\GG1RKK_HFT_2023241\\GG1RKK_HFT_202324.Models\\GG1RKK_HFT_202324.Models.csproj"
+            },
+            "C:\\D\\Study\\3FÉLÉV\\HFT\\FELEVES_FELADAT\\GG1RKK_HFT_2023241\\GG1RKK_HFT_2023241.Repository\\GG1RKK_HFT_2023241.Repository.csproj": {
+              "projectPath": "C:\\D\\Study\\3FÉLÉV\\HFT\\FELEVES_FELADAT\\GG1RKK_HFT_2023241\\GG1RKK_HFT_2023241.Repository\\GG1RKK_HFT_2023241.Repository.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
