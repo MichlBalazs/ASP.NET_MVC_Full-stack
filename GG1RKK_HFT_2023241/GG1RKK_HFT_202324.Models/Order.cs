@@ -20,6 +20,21 @@ namespace GG1RKK_HFT_202324.Models
 
         public List<int> ItemIdList { get; set; }
 
-        public DateTime OrderDate { get; set; }
+
+        public Order()
+        {
+            
+        }
+        //public Order(string line)
+        //{
+        //    string[] split = line.Split('#');
+        //    OrderId = int.Parse(split[0]);
+        //    CustomerName = split[1];
+        //    string[] split2 = split[2].Split(',');
+        //    foreach (var item in split2)
+        //    {
+        //        ItemIdList.Add(int.Parse(item));
+        //    }
+        //}
     }
 }

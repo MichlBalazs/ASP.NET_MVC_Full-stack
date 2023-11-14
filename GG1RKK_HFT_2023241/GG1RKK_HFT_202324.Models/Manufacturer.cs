@@ -21,11 +21,11 @@ namespace GG1RKK_HFT_202324.Models
 
         }
 
-        public Manufacturer(string line)
-        {
-            string[] split = line.Split('#');
-            ManufacturerId = int.Parse(split[0]);
-            ManufacturerName = split[1];
-        }
+        //public Manufacturer(string line)
+        //{
+        //    string[] split = line.Split('#');
+        //    ManufacturerId = int.Parse(split[0]);
+        //    ManufacturerName = split[1];
+        //}
     }
 }
