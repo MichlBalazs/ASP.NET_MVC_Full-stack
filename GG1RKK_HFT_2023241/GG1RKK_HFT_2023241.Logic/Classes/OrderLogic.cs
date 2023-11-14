@@ -11,29 +11,35 @@ namespace GG1RKK_HFT_2023241.Logic.Classes
 {
     internal class OrderLogic : IOrderLogic
     {
+        IRepository<Order> repo;
+        public OrderLogic(IRepository<Order> repo)
+        {
+            this.repo = repo;
+        }
+
         public void Create(Order item)
         {
-            throw new NotImplementedException();
+            repo.Create(item);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            repo.Delete(id);
         }
 
         public Order Read(int id)
         {
-            throw new NotImplementedException();
+            return repo.Read(id);
         }
 
         public IQueryable<Order> ReadAll()
         {
-            throw new NotImplementedException();
+            return repo.ReadAll();
         }
 
         public void Update(Order item)
         {
-            throw new NotImplementedException();
+            repo.Update(item);
         }
     }
 }

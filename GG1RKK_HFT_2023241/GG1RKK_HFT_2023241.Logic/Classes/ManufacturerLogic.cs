@@ -11,29 +11,34 @@ namespace GG1RKK_HFT_2023241.Logic.Classes
 {
     internal class ManufacturerLogic : IManufacturerLogic
     {
+        IRepository<Manufacturer> repo;
+        public ManufacturerLogic(IRepository<Manufacturer> repo)
+        {
+            this.repo = repo;
+        }
         public void Create(Manufacturer item)
         {
-            throw new NotImplementedException();
+            repo.Create(item);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            repo.Delete(id);
         }
 
         public Manufacturer Read(int id)
         {
-            throw new NotImplementedException();
+            return repo.Read(id);
         }
 
         public IQueryable<Manufacturer> ReadAll()
         {
-            throw new NotImplementedException();
+            return repo.ReadAll();
         }
 
         public void Update(Manufacturer item)
         {
-            throw new NotImplementedException();
+            repo.Update(item);
         }
     }
 }
