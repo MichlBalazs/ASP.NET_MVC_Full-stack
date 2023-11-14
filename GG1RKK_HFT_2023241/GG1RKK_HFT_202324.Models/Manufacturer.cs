@@ -16,6 +16,7 @@ namespace GG1RKK_HFT_202324.Models
         [StringLength(240)]
         public string ManufacturerName { get; set; }
 
+
         public Manufacturer()
         {
 

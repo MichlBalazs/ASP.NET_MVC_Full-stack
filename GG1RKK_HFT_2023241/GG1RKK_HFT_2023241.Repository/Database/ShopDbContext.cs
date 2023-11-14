@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace GG1RKK_HFT_2023241.Repository.Database
 {
-    internal class ShopDbContext : DbContext
+    public class ShopDbContext : DbContext
     {
         public DbSet<Item> Items { get; set; }
         public DbSet<Manufacturer> Manufacturers { get; set; }
@@ -36,48 +36,59 @@ namespace GG1RKK_HFT_2023241.Repository.Database
                 .HasForeignKey(item => item.ManufacturerId)
                 .OnDelete(DeleteBehavior.Cascade));
 
+            modelBuilder.Entity<Manufacturer>(m => m
+                .HasMany<Item>()
+                .WithOne()
+                .OnDelete(DeleteBehavior.Cascade));
+
+            modelBuilder.Entity<Order>(o => o
+            .HasMany<Item>()
+            .WithOne()
+            );
+
+
             modelBuilder.Entity<Item>().HasData(new Item[]
             {
-                new Item {ItemId = 1, ItemName = "Claymore", Price = 100, InStock = 2, ManufacturerId = 2},
-                new Item {ItemId = 2, ItemName = "Potion of Invisibility", Price = 50, InStock = 10, ManufacturerId = 3},
-                new Item {ItemId = 3, ItemName = "Rune Staff", Price = 200, InStock = 5, ManufacturerId = 4},
-                new Item {ItemId = 4, ItemName = "Celestial Ring", Price = 150, InStock = 8, ManufacturerId = 5},
-                new Item {ItemId = 5, ItemName = "Sorcerer's Spellbook", Price = 120, InStock = 12, ManufacturerId = 6},
-                new Item {ItemId = 6, ItemName = "Ring of Shadows", Price = 300, InStock = 2, ManufacturerId = 6},
-                new Item {ItemId = 7, ItemName = "Cloak of Shadows", Price = 300, InStock = 2, ManufacturerId = 6},
-                new Item {ItemId = 8, ItemName = "Legendary Helm", Price = 500, InStock = 1, ManufacturerId = 7},
-                new Item {ItemId = 9, ItemName = "Amulet of Eternal Wisdom", Price = 800, InStock = 1, ManufacturerId = 8},
-                new Item {ItemId = 10, ItemName = "Sorcerer's Robe", Price = 120, InStock = 5, ManufacturerId = 1},
-                new Item {ItemId = 11, ItemName = "Phoenix Feather Wand", Price = 180, InStock = 3, ManufacturerId = 2},
-                new Item {ItemId = 12, ItemName = "Dragon Scale Armor", Price = 400, InStock = 2, ManufacturerId = 3},
-                new Item {ItemId = 13, ItemName = "Cursed Dagger", Price = 60, InStock = 10, ManufacturerId = 4},
-                new Item {ItemId = 14, ItemName = "Elven Bow", Price = 150, InStock = 7, ManufacturerId = 5},
-                new Item {ItemId = 15, ItemName = "Crystal Ball", Price = 250, InStock = 4, ManufacturerId = 6},
-                new Item {ItemId = 16, ItemName = "Staff of Time Manipulation", Price = 700, InStock = 1, ManufacturerId = 7},
-                new Item {ItemId = 17, ItemName = "Scepter of the Elements", Price = 1000, InStock = 1, ManufacturerId = 8},
-                new Item {ItemId = 18, ItemName = "Thief's Toolkit", Price = 30, InStock = 12, ManufacturerId = 1},
-                new Item {ItemId = 19, ItemName = "Mystic Crystal", Price = 90, InStock = 6, ManufacturerId = 2},
-                new Item {ItemId = 20, ItemName = "Aegis Shield", Price = 300, InStock = 3, ManufacturerId = 3},
-                new Item {ItemId = 21, ItemName = "Helm of the Dragonborn", Price = 600, InStock = 1, ManufacturerId = 4},
-                new Item {ItemId = 22, ItemName = "Venomous Dagger", Price = 70, InStock = 8, ManufacturerId = 5},
-                new Item {ItemId = 23, ItemName = "Wand of Ice", Price = 160, InStock = 5, ManufacturerId = 6},
-                new Item {ItemId = 24, ItemName = "Mystical Robes", Price = 250, InStock = 4, ManufacturerId = 7},
-                new Item {ItemId = 25, ItemName = "Ancient Tome", Price = 180, InStock = 6, ManufacturerId = 8},
-                new Item {ItemId = 26, ItemName = "Soulstone Amulet", Price = 400, InStock = 2, ManufacturerId = 1},
-                new Item {ItemId = 27, ItemName = "Blazing Sword", Price = 300, InStock = 3, ManufacturerId = 2},
-                new Item {ItemId = 28, ItemName = "Dwarven Gauntlets", Price = 120, InStock = 7, ManufacturerId = 3},
-                new Item {ItemId = 29, ItemName = "Enchanted Mirror", Price = 180, InStock = 5, ManufacturerId = 4},
-                new Item {ItemId = 30, ItemName = "Lunar Staff", Price = 600, InStock = 1, ManufacturerId = 5},
-                new Item {ItemId = 31, ItemName = "Cloak of Ethereal Shadows", Price = 350, InStock = 2, ManufacturerId = 6},
-                new Item {ItemId = 32, ItemName = "Scepter of Arcane Mastery", Price = 900, InStock = 1, ManufacturerId = 7},
-                new Item {ItemId = 33, ItemName = "Crystal Crown", Price = 500, InStock = 2, ManufacturerId = 8},
-                new Item {ItemId = 34, ItemName = "Bard's Lute", Price = 80, InStock = 10, ManufacturerId = 1},
-                new Item {ItemId = 35, ItemName = "Silent Bow", Price = 200, InStock = 4, ManufacturerId = 2},
-                new Item {ItemId = 36, ItemName = "Thunderstone Hammer", Price = 450, InStock = 2, ManufacturerId = 3},
-                new Item {ItemId = 37, ItemName = "Crown of Eternal Wisdom", Price = 1000, InStock = 1, ManufacturerId = 4},
-                new Item {ItemId = 38, ItemName = "Assassin's Cloak", Price = 300, InStock = 3, ManufacturerId = 5},
-                new Item {ItemId = 39, ItemName = "Eagle Eye Amulet", Price = 150, InStock = 6, ManufacturerId = 6},
-                new Item {ItemId = 40, ItemName = "Astral Compass", Price = 120, InStock = 8, ManufacturerId = 7},
+                new Item {ItemId = 1, ItemName = "Claymore", Price = 100, ManufacturerId = 2},
+                new Item {ItemId = 2, ItemName = "Potion of Invisibility", Price = 50, ManufacturerId = 3},
+                new Item {ItemId = 3, ItemName = "Rune Staff", Price = 200, ManufacturerId = 4},
+                new Item {ItemId = 4, ItemName = "Celestial Ring", Price = 150, ManufacturerId = 5},
+                new Item {ItemId = 5, ItemName = "Sorcerer's Spellbook", Price = 120, ManufacturerId = 6},
+                new Item {ItemId = 6, ItemName = "Ring of Shadows", Price = 300, ManufacturerId = 6},
+                new Item {ItemId = 7, ItemName = "Cloak of Shadows", Price = 300, ManufacturerId = 6},
+                new Item {ItemId = 8, ItemName = "Legendary Helm", Price = 500, ManufacturerId = 7},
+                new Item {ItemId = 9, ItemName = "Amulet of Eternal Wisdom", Price = 800, ManufacturerId = 8},
+                new Item {ItemId = 10, ItemName = "Sorcerer's Robe", Price = 120, ManufacturerId = 1},
+                new Item {ItemId = 11, ItemName = "Phoenix Feather Wand", Price = 180, ManufacturerId = 2},
+                new Item {ItemId = 12, ItemName = "Dragon Scale Armor", Price = 400, ManufacturerId = 3},
+                new Item {ItemId = 13, ItemName = "Cursed Dagger", Price = 60, ManufacturerId = 4},
+                new Item {ItemId = 14, ItemName = "Elven Bow", Price = 150, ManufacturerId = 5},
+                new Item {ItemId = 15, ItemName = "Crystal Ball", Price = 250, ManufacturerId = 6},
+                new Item {ItemId = 16, ItemName = "Staff of Time Manipulation", Price = 700, ManufacturerId = 7},
+                new Item {ItemId = 17, ItemName = "Scepter of the Elements", Price = 1000, ManufacturerId = 8},
+                new Item {ItemId = 18, ItemName = "Thief's Toolkit", Price = 30, ManufacturerId = 1},
+                new Item {ItemId = 19, ItemName = "Mystic Crystal", Price = 90, ManufacturerId = 2},
+                new Item {ItemId = 20, ItemName = "Aegis Shield", Price = 300, ManufacturerId = 3},
+                new Item {ItemId = 21, ItemName = "Helm of the Dragonborn", Price = 600, ManufacturerId = 4},
+                new Item {ItemId = 22, ItemName = "Venomous Dagger", Price = 70, ManufacturerId = 5},
+                new Item {ItemId = 23, ItemName = "Wand of Ice", Price = 160, ManufacturerId = 6},
+                new Item {ItemId = 24, ItemName = "Mystical Robes", Price = 250, ManufacturerId = 7},
+                new Item {ItemId = 25, ItemName = "Ancient Tome", Price = 180, ManufacturerId = 8},
+                new Item {ItemId = 26, ItemName = "Soulstone Amulet", Price = 400, ManufacturerId = 1},
+                new Item {ItemId = 27, ItemName = "Blazing Sword", Price = 300, ManufacturerId = 2},
+                new Item {ItemId = 28, ItemName = "Dwarven Gauntlets", Price = 120, ManufacturerId = 3},
+                new Item {ItemId = 29, ItemName = "Enchanted Mirror", Price = 180, ManufacturerId = 4},
+                new Item {ItemId = 30, ItemName = "Lunar Staff", Price = 600, ManufacturerId = 5},
+                new Item {ItemId = 31, ItemName = "Cloak of Ethereal Shadows", Price = 350, ManufacturerId = 6},
+                new Item {ItemId = 32, ItemName = "Scepter of Arcane Mastery", Price = 900, ManufacturerId = 7},
+                new Item {ItemId = 33, ItemName = "Crystal Crown", Price = 500, ManufacturerId = 8},
+                new Item {ItemId = 34, ItemName = "Bard's Lute", Price = 80, ManufacturerId = 1},
+                new Item {ItemId = 35, ItemName = "Silent Bow", Price = 200, ManufacturerId = 2},
+                new Item {ItemId = 36, ItemName = "Thunderstone Hammer", Price = 450, ManufacturerId = 3},
+                new Item {ItemId = 37, ItemName = "Crown of Eternal Wisdom", Price = 1000, ManufacturerId = 4},
+                new Item {ItemId = 38, ItemName = "Assassin's Cloak", Price = 300, ManufacturerId = 5},
+                new Item {ItemId = 39, ItemName = "Eagle Eye Amulet", Price = 150, ManufacturerId = 6},
+                new Item {ItemId = 40, ItemName = "Astral Compass", Price = 120, ManufacturerId = 7},
             });
 
             modelBuilder.Entity<Manufacturer>().HasData(new Manufacturer[]

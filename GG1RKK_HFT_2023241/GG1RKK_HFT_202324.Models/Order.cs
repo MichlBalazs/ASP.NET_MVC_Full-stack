@@ -18,7 +18,7 @@ namespace GG1RKK_HFT_202324.Models
         [StringLength(100)]
         public string CustomerName { get; set; }
 
-        public List<int> ItemIdList { get; set; }
+        public ICollection<int> ItemIdList { get; set; }
 
 
         public Order()
