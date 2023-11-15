@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "GG1RKK_HFT_2023241.Client/1.0.0": {
+        "dependencies": {
+          "GG1RKK_HFT_202324.Models": "1.0.0"
+        },
+        "runtime": {
+          "GG1RKK_HFT_2023241.Client.dll": {}
+        }
+      },
+      "GG1RKK_HFT_202324.Models/1.0.0": {
+        "runtime": {
+          "GG1RKK_HFT_202324.Models.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "GG1RKK_HFT_2023241.Client/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GG1RKK_HFT_202324.Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
