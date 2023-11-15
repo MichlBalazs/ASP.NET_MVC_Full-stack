@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace GG1RKK_HFT_2023241.Logic.Classes
 {
-    internal class ManufacturerLogic : IManufacturerLogic
+    public class ManufacturerLogic : IManufacturerLogic
     {
         IRepository<Manufacturer> repo;
         public ManufacturerLogic(IRepository<Manufacturer> repo)
