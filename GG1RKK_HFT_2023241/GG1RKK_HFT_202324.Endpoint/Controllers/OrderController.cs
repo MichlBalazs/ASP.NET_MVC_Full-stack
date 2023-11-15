@@ -9,35 +9,35 @@ namespace GG1RKK_HFT_202324.Endpoint.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class ItemController : ControllerBase
+    public class OrderController : ControllerBase
     {
-        IItemLogic logic;
+        IOrderLogic logic;
 
-        public ItemController(IItemLogic logic)
+        public OrderController(IOrderLogic logic)
         {
             this.logic = logic;
         }
 
         [HttpGet]
-        public IEnumerable<Item> ReadAll()
+        public IEnumerable<Order> ReadAll()
         {
             return this.logic.ReadAll();
         }
 
         [HttpGet("{id}")]
-        public Item Read(int id)
+        public Order Read(int id)
         {
             return this.logic.Read(id);
         }
 
         [HttpPost]
-        public void Create([FromBody] Item value)
+        public void Create([FromBody] Order value)
         {
             this.logic.Create(value);
         }
 
         [HttpPut]
-        public void Update([FromBody] Item value)
+        public void Update([FromBody] Order value)
         {
             this.logic.Update(value);
         }
