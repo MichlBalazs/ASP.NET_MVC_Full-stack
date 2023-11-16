@@ -16,9 +16,13 @@ namespace GG1RKK_HFT_2023241.Logic.Classes
         {
             this.repo = repo;
         }
-        public void Create(Manufacturer item)
+        public void Create(Manufacturer m)
         {
-            repo.Create(item);
+            if (m.ManufacturerName.Length < 3)
+            {
+                throw new ArgumentException("Name is too short");
+            }
+            repo.Create(m);
         }
 
         public void Delete(int id)
@@ -28,7 +32,12 @@ namespace GG1RKK_HFT_2023241.Logic.Classes
 
         public Manufacturer Read(int id)
         {
-            return repo.Read(id);
+            var m = this.repo.Read(id);
+            if (m == null)
+            {
+                throw new ArgumentException("Manufacturer not exist");
+            }
+            return m;
         }
 
         public IQueryable<Manufacturer> ReadAll()
@@ -36,9 +45,9 @@ namespace GG1RKK_HFT_2023241.Logic.Classes
             return repo.ReadAll();
         }
 
-        public void Update(Manufacturer item)
+        public void Update(Manufacturer m)
         {
-            repo.Update(item);
+            repo.Update(m);
         }
     }
 }

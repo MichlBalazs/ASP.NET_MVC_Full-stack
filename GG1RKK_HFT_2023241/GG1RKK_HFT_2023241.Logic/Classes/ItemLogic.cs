@@ -15,6 +15,10 @@ namespace GG1RKK_HFT_2023241.Logic.Classes
         }
         public void Create(Item item)
         {
+            if (item.ItemName.Length < 3)
+            {
+                throw new ArgumentException("Name is too short");
+            }
             repo.Create(item);
         }
 
@@ -25,7 +29,12 @@ namespace GG1RKK_HFT_2023241.Logic.Classes
 
         public Item Read(int id)
         {
-            return repo.Read(id);
+            var item = this.repo.Read(id);
+            if (item == null)
+            {
+                throw new ArgumentException("Item does not exist");
+            }
+            return item;
         }
 
         public IQueryable<Item> ReadAll()

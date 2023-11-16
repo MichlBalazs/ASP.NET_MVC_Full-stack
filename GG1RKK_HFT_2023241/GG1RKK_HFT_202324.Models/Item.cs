@@ -20,7 +20,7 @@ namespace GG1RKK_HFT_202324.Models
 
         [Range(0, 1000)]
         public int Price { get; set; }
-        public int ManufacturerId { get; set; }
+        public Manufacturer Manufacturer { get; set; }
         public Item()
         {
             

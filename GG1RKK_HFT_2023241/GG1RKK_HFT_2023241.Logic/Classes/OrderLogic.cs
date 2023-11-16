@@ -17,9 +17,13 @@ namespace GG1RKK_HFT_2023241.Logic.Classes
             this.repo = repo;
         }
 
-        public void Create(Order item)
+        public void Create(Order order)
         {
-            repo.Create(item);
+            if (order.CustomerName.Length < 3)
+            {
+                throw new ArgumentException("Name is too short");
+            }
+            repo.Create(order);
         }
 
         public void Delete(int id)
@@ -29,7 +33,12 @@ namespace GG1RKK_HFT_2023241.Logic.Classes
 
         public Order Read(int id)
         {
-            return repo.Read(id);
+            var order = this.repo.Read(id);
+            if (order == null)
+            {
+                throw new ArgumentException("Order does not exist");
+            }
+            return order;
         }
 
         public IQueryable<Order> ReadAll()
@@ -37,9 +46,9 @@ namespace GG1RKK_HFT_2023241.Logic.Classes
             return repo.ReadAll();
         }
 
-        public void Update(Order item)
+        public void Update(Order order)
         {
-            repo.Update(item);
+            repo.Update(order);
         }
     }
 }
