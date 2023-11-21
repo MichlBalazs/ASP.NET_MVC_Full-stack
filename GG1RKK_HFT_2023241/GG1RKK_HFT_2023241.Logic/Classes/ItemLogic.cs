@@ -1,7 +1,12 @@
-﻿using GG1RKK_HFT_202324.Models;
+﻿using Castle.DynamicProxy;
+using GG1RKK_HFT_202324.Models;
 using GG1RKK_HFT_2023241.Logic.Interfaces;
+using GG1RKK_HFT_2023241.Repository.Database;
 using GG1RKK_HFT_2023241.Repository.Interface;
+using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace GG1RKK_HFT_2023241.Logic.Classes
@@ -46,5 +51,16 @@ namespace GG1RKK_HFT_2023241.Logic.Classes
         {
             repo.Update(item);
         }
+
+
+        public double? AveragePrice()
+        {
+            return repo.ReadAll().Average(t => t.Price);
+        }
+        public IEnumerable<Item> Top3()
+        {
+            return repo.ReadAll().OrderByDescending(t => t.Price).Take(3);
+        }
     }
+
 }

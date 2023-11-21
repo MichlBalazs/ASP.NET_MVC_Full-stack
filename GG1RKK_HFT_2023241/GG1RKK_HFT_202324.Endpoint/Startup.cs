@@ -21,11 +21,11 @@ namespace GG1RKK_HFT_202324.Endpoint
             services.AddTransient<ShopDbContext>();
 
             services.AddTransient<IRepository<Item>, ItemRepository>();
-            services.AddTransient<IRepository<Manufacturer>, ManufacturerRepository>();
+            services.AddTransient<IRepository<Category>, CategoryRepositrory>();
             services.AddTransient<IRepository<Order>, OrderRepository>();
 
             services.AddTransient<IItemLogic, ItemLogic>();
-            services.AddTransient<IManufacturerLogic, ManufacturerLogic>();
+            services.AddTransient<ICategoryLogic, CategoryLogic>();
             services.AddTransient<IOrderLogic, OrderLogic>();
 
             services.AddControllers();

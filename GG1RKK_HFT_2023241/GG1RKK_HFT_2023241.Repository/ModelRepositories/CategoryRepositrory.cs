@@ -10,19 +10,19 @@ using System.Threading.Tasks;
 
 namespace GG1RKK_HFT_2023241.Repository.ModelRepositories
 {
-    public class ManufacturerRepository : Repository<Manufacturer>, IRepository<Manufacturer>
+    public class CategoryRepositrory : Repository<Category>, IRepository<Category>
     {
-        public ManufacturerRepository(ShopDbContext ctx) : base(ctx)
+        public CategoryRepositrory(ShopDbContext ctx) : base(ctx)
         {
         }
-        public override Manufacturer Read(int id)
+        public override Category Read(int id)
         {
-            return ctx.Manufacturers.FirstOrDefault(t => t.ManufacturerId == id);
+            return ctx.Manufacturers.FirstOrDefault(t => t.CategoryId == id);
         }
 
-        public override void Update(Manufacturer item)
+        public override void Update(Category item)
         {
-            var old = Read(item.ManufacturerId);
+            var old = Read(item.CategoryId);
             foreach (var prop in old.GetType().GetProperties())
             {
                 prop.SetValue(old, prop.GetValue(item));

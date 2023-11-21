@@ -9,35 +9,35 @@ namespace GG1RKK_HFT_202324.Endpoint.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class ManufacturerController : ControllerBase
+    public class CategoryController : ControllerBase
     {
-        IManufacturerLogic logic;
+        ICategoryLogic logic;
 
-        public ManufacturerController(IManufacturerLogic logic)
+        public CategoryController(ICategoryLogic logic)
         {
             this.logic = logic;
         }
 
         [HttpGet]
-        public IEnumerable<Manufacturer> ReadAll()
+        public IEnumerable<Category> ReadAll()
         {
             return this.logic.ReadAll();
         }
 
         [HttpGet("{id}")]
-        public Manufacturer Read(int id)
+        public Category Read(int id)
         {
             return this.logic.Read(id);
         }
 
         [HttpPost]
-        public void Create([FromBody] Manufacturer value)
+        public void Create([FromBody] Category value)
         {
             this.logic.Create(value);
         }
 
         [HttpPut]
-        public void Update([FromBody] Manufacturer value)
+        public void Update([FromBody] Category value)
         {
             this.logic.Update(value);
         }

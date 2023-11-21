@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace GG1RKK_HFT_2023241.Logic.Classes
 {
-    public class ManufacturerLogic : IManufacturerLogic
+    public class CategoryLogic : ICategoryLogic
     {
-        IRepository<Manufacturer> repo;
-        public ManufacturerLogic(IRepository<Manufacturer> repo)
+        IRepository<Category> repo;
+        public CategoryLogic(IRepository<Category> repo)
         {
             this.repo = repo;
         }
-        public void Create(Manufacturer m)
+        public void Create(Category m)
         {
             if (m.ManufacturerName.Length < 3)
             {
@@ -30,7 +30,7 @@ namespace GG1RKK_HFT_2023241.Logic.Classes
             repo.Delete(id);
         }
 
-        public Manufacturer Read(int id)
+        public Category Read(int id)
         {
             var m = this.repo.Read(id);
             if (m == null)
@@ -40,12 +40,12 @@ namespace GG1RKK_HFT_2023241.Logic.Classes
             return m;
         }
 
-        public IQueryable<Manufacturer> ReadAll()
+        public IQueryable<Category> ReadAll()
         {
             return repo.ReadAll();
         }
 
-        public void Update(Manufacturer m)
+        public void Update(Category m)
         {
             repo.Update(m);
         }
