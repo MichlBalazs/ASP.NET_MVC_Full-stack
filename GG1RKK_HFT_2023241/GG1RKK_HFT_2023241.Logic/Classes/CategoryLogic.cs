@@ -18,7 +18,7 @@ namespace GG1RKK_HFT_2023241.Logic.Classes
         }
         public void Create(Category m)
         {
-            if (m.ManufacturerName.Length < 3)
+            if (m.CategoryName.Length < 3)
             {
                 throw new ArgumentException("Name is too short");
             }

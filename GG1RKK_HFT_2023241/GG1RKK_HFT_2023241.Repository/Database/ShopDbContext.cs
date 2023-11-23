@@ -14,8 +14,9 @@ namespace GG1RKK_HFT_2023241.Repository.Database
     public class ShopDbContext : DbContext
     {
         public DbSet<Item> Items { get; set; }
-        public DbSet<Category> Manufacturers { get; set; }
+        public DbSet<Category> Categories { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<Adventurer> Adventurers { get; set; }
         public ShopDbContext()
         {
             this.Database.EnsureCreated();
@@ -122,6 +123,41 @@ namespace GG1RKK_HFT_2023241.Repository.Database
                 new Item {ItemId = 44, ItemName = "Thief's Toolkit", CategoryId = 5, Price = 30 },
                 new Item {ItemId = 45, ItemName = "Astral Compass", CategoryId = 5, Price = 120 },
             });
+
+            //Orders
+            modelBuilder.Entity<Order>().HasData(new Order[]
+            {
+                new Order { OrderId = 1, AdventurerId = 1, ItemId = 2 },
+                new Order { OrderId = 2, AdventurerId = 1, ItemId = 8 },
+                new Order { OrderId = 3, AdventurerId = 2, ItemId = 13 },
+                new Order { OrderId = 4, AdventurerId = 3, ItemId = 18 },
+                new Order { OrderId = 5, AdventurerId = 3, ItemId = 23 },
+                new Order { OrderId = 6, AdventurerId = 4, ItemId = 28 },
+                new Order { OrderId = 7, AdventurerId = 4, ItemId = 33 },
+                new Order { OrderId = 8, AdventurerId = 5, ItemId = 3 },
+                new Order { OrderId = 9, AdventurerId = 6, ItemId = 38 },
+                new Order { OrderId = 10, AdventurerId = 6, ItemId = 43 },
+                new Order { OrderId = 11, AdventurerId = 7, ItemId = 48 },
+                new Order { OrderId = 12, AdventurerId = 7, ItemId = 1 },
+                new Order { OrderId = 13, AdventurerId = 8, ItemId = 6 },
+                new Order { OrderId = 14, AdventurerId = 8, ItemId = 11 },
+                new Order { OrderId = 15, AdventurerId = 9, ItemId = 16 },
+                new Order { OrderId = 16, AdventurerId = 10, ItemId = 21 },
+                new Order { OrderId = 17, AdventurerId = 10, ItemId = 26 },
+                new Order { OrderId = 18, AdventurerId = 11, ItemId = 31 },
+                new Order { OrderId = 19, AdventurerId = 11, ItemId = 36 },
+                new Order { OrderId = 20, AdventurerId = 12, ItemId = 41 },
+                new Order { OrderId = 21, AdventurerId = 2, ItemId = 5 },
+                new Order { OrderId = 22, AdventurerId = 3, ItemId = 10 },
+                new Order { OrderId = 23, AdventurerId = 4, ItemId = 15 },
+                new Order { OrderId = 24, AdventurerId = 5, ItemId = 20 },
+                new Order { OrderId = 25, AdventurerId = 6, ItemId = 25 },
+                new Order { OrderId = 26, AdventurerId = 7, ItemId = 30 },
+                new Order { OrderId = 27, AdventurerId = 8, ItemId = 35 },
+                new Order { OrderId = 28, AdventurerId = 9, ItemId = 40 },
+                new Order { OrderId = 29, AdventurerId = 10, ItemId = 45 },
+            });
+
 
 
         }

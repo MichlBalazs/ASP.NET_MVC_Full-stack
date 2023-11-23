@@ -2,26 +2,24 @@
 using GG1RKK_HFT_2023241.Logic.Interfaces;
 using GG1RKK_HFT_2023241.Repository.Database;
 using GG1RKK_HFT_2023241.Repository.Interface;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace GG1RKK_HFT_2023241.Logic.Classes
 {
-    public class OrderLogic : IOrderLogic
+    public class AdventurerLogic : IAdventurerLogic
     {
-        IRepository<Order> repo;
-        public OrderLogic(IRepository<Order> repo)
+        IRepository<Adventurer> repo;
+        public AdventurerLogic(IRepository<Adventurer> repo)
         {
             this.repo = repo;
         }
 
-        public void Create(Order order)
+        public void Create(Adventurer adventurer)
         {
-            repo.Create(order);
+            repo.Create(adventurer);
         }
 
         public void Delete(int id)
@@ -29,24 +27,24 @@ namespace GG1RKK_HFT_2023241.Logic.Classes
             repo.Delete(id);
         }
 
-        public Order Read(int id)
+        public Adventurer Read(int id)
         {
-            var order = this.repo.Read(id);
-            if (order == null)
+            var adventurer = this.repo.Read(id);
+            if (adventurer == null)
             {
                 throw new ArgumentException("Order does not exist");
             }
-            return order;
+            return adventurer;
         }
 
-        public IQueryable<Order> ReadAll()
+        public IQueryable<Adventurer> ReadAll()
         {
             return repo.ReadAll();
         }
 
-        public void Update(Order order)
+        public void Update(Adventurer adventurer)
         {
-            repo.Update(order);
+            repo.Update(adventurer);
         }
     }
 }

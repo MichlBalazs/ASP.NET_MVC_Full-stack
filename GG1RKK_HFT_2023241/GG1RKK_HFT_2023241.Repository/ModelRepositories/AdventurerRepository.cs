@@ -10,24 +10,25 @@ using System.Threading.Tasks;
 
 namespace GG1RKK_HFT_2023241.Repository.ModelRepositories
 {
-    public class CategoryRepositrory : Repository<Category>, IRepository<Category>
+    public class AdventurerRepository : Repository<Adventurer>, IRepository<Adventurer>
     {
-        public CategoryRepositrory(ShopDbContext ctx) : base(ctx)
+        public AdventurerRepository(ShopDbContext ctx) : base(ctx)
         {
         }
-        public override Category Read(int id)
+        public override Adventurer Read(int id)
         {
-            return ctx.Categories.FirstOrDefault(t => t.CategoryId == id);
+            return ctx.Adventurers.FirstOrDefault(t => t.AdventurerId == id);
         }
 
-        public override void Update(Category category)
+        public override void Update(Adventurer adventurer)
         {
-            var old = Read(category.CategoryId);
+            var old = Read(adventurer.AdventurerId);
             foreach (var prop in old.GetType().GetProperties())
             {
-                prop.SetValue(old, prop.GetValue(category));
+                prop.SetValue(old, prop.GetValue(adventurer));
             }
             ctx.SaveChanges();
         }
     }
+}
 }
