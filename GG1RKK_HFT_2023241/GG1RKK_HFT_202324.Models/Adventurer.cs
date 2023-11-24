@@ -14,7 +14,7 @@ namespace GG1RKK_HFT_2023241.Repository.Database
 
         [Required]
         [StringLength(100)]
-        public string Name { get; set; }
+        public string AdventurerName { get; set; }
         [StringLength(100)]
         public string Class { get; set; }
         [Range(1,20)]
