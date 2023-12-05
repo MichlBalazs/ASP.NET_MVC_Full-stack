@@ -16,12 +16,9 @@ namespace GG1RKK_HFT_202324.Models
         [StringLength(100)]
         public string CategoryName { get; set; }
 
-
         public Category()
         {
 
         }
-
-        
     }
 }

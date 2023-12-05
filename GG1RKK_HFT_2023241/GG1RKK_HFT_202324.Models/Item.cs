@@ -18,6 +18,7 @@ namespace GG1RKK_HFT_202324.Models
         [Range(0, 1000)]
         public int Price { get; set; }
         public int CategoryId { get; set; }
+        public Category Category { get; set; }
         public ICollection<Order> Orders { get; set; }
         public Item()
         {

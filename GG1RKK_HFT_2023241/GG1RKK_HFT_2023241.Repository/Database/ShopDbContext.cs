@@ -31,6 +31,26 @@ namespace GG1RKK_HFT_2023241.Repository.Database
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            modelBuilder.Entity<Order>()
+                .HasKey(o => new { o.AdventurerId, o.ItemId });
+
+            modelBuilder.Entity<Order>()
+                .HasOne(o => o.Adventurer)
+                .WithMany(a => a.Orders)
+                .HasForeignKey(o => o.AdventurerId);
+
+            modelBuilder.Entity<Order>()
+                .HasOne(o => o.Item)
+                .WithMany(i => i.Orders)
+                .HasForeignKey(o => o.ItemId);
+
+            modelBuilder.Entity<Item>()
+            .HasOne(i => i.Category)
+            .WithMany()
+            .HasForeignKey(i => i.CategoryId);
+
+
             modelBuilder.Entity<Adventurer>().HasData(new Adventurer[]
             {
                 new Adventurer { AdventurerId = 1, AdventurerName = "Jake the Dog", Class = "Druid", Level = 5 },
