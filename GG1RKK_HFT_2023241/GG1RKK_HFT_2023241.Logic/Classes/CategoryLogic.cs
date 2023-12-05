@@ -49,5 +49,14 @@ namespace GG1RKK_HFT_2023241.Logic.Classes
         {
             repo.Update(m);
         }
+        public IQueryable<object> GetItemCountPerCategory()
+        {
+            return repo.ReadAll()
+                .Select(category => new
+                {
+                    CategoryName = category.CategoryName,
+                    ItemCount = repo.ReadAll().Count(item => item.CategoryId == category.CategoryId)
+                });
+        }
     }
 }

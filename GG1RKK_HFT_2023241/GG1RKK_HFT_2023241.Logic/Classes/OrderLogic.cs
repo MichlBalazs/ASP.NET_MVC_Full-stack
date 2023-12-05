@@ -48,5 +48,17 @@ namespace GG1RKK_HFT_2023241.Logic.Classes
         {
             repo.Update(order);
         }
+
+        public IEnumerable<object> GetOrdersWithItemDetails()
+        {
+            return repo.ReadAll()
+                .Select(order => new
+                {
+                    AdventurerName = order.Adventurer.AdventurerName,
+                    ItemName = order.Item.ItemName,
+                    ItemPrice = order.Item.Price
+                });
+        }
+
     }
 }
