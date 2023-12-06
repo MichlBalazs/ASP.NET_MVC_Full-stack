@@ -48,29 +48,22 @@ namespace GG1RKK_HFT_2023241.Logic.Classes
         {
             repo.Update(order);
         }
-
-        public IEnumerable<OrderDetails> GetOrdersWithDetails()
+        public int OrderCount(int AdventurerId)
         {
-            return repo.ReadAll()
-                .Select(order => new OrderDetails
-                {
-                    AdventurerName = order.Adventurer.AdventurerName,
-                    ItemName = order.Item.ItemName,
-                    ItemPrice = order.Item.Price
-                });
+            return this.repo.ReadAll().Where(x => x.AdventurerId == AdventurerId).Count();
         }
-
-    }
-
-    public class OrderDetails
-    {
-        public string AdventurerName { get; set; }
-        public string ItemName { get; set; }
-        public int ItemPrice { get; set; }
-        public override bool Equals(object obj)
+        public int OrderedItemsCategory(int OrderId)
         {
-            OrderDetails o = obj as OrderDetails;
-            return this.AdventurerName == o.AdventurerName && this.ItemName == o.AdventurerName && this.ItemPrice == o.ItemPrice;
+            return this.repo.ReadAll().FirstOrDefault(x => x.OrderId == OrderId).Item.CategoryId;
+        }
+        public double OrderedItemsAvgPrice()
+        {
+            return this.repo.ReadAll().Average(x => x.Item.Price);
+        }
+        public string WhoBoughtThisItem(int itemId)
+        {
+            var result = this.repo.ReadAll().Where(x => x.Item.ItemId == itemId).Select(y => y.Adventurer.AdventurerName).FirstOrDefault();
+            return result;
         }
     }
 }

@@ -53,24 +53,6 @@ namespace GG1RKK_HFT_2023241.Logic.Classes
         }
 
 
-        //public double? AveragePrice()
-        //{
-        //    return repo.ReadAll().Average(t => t.Price);
-        //}
-        //public IEnumerable<Item> Top3()
-        //{
-        //    return repo.ReadAll().OrderByDescending(t => t.Price).Take(3);
-        //}
-
-        public IEnumerable GetItemOrderCount()
-        {
-            return repo.ReadAll()
-                .Select(item => new
-                {
-                    ItemName = item.ItemName,
-                    OrderCount = item.Orders.Count() 
-                });
-        }
 
     }
 

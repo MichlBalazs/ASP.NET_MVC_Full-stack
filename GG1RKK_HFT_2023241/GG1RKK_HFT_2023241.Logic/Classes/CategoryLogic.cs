@@ -16,13 +16,13 @@ namespace GG1RKK_HFT_2023241.Logic.Classes
         {
             this.repo = repo;
         }
-        public void Create(Category m)
+        public void Create(Category c)
         {
-            if (m.CategoryName.Length < 3)
+            if (c.CategoryName.Length < 3)
             {
                 throw new ArgumentException("Name is too short");
             }
-            repo.Create(m);
+            repo.Create(c);
         }
 
         public void Delete(int id)
@@ -32,12 +32,7 @@ namespace GG1RKK_HFT_2023241.Logic.Classes
 
         public Category Read(int id)
         {
-            var m = this.repo.Read(id);
-            if (m == null)
-            {
-                throw new ArgumentException("Manufacturer not exist");
-            }
-            return m;
+            return this.repo.Read(id);
         }
 
         public IQueryable<Category> ReadAll()

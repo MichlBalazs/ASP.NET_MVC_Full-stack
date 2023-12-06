@@ -24,11 +24,17 @@ namespace GG1RKK_HFT_2023241.Test
             mockItemRepo = new Mock<IRepository<Item>>();
             mockItemRepo.Setup(m => m.ReadAll()).Returns(new List<Item>()
             {
-                new Item {ItemId = 1, ItemName = "Claymore", CategoryId = 1, Price = 100 }
+                new Item {ItemId = 1, ItemName = "SWORD", CategoryId = 1, Price = 100 },
+                new Item {ItemId = 2, ItemName = "SHIELD", CategoryId = 1, Price = 80 },
+                new Item {ItemId = 3, ItemName = "WAND", CategoryId = 2, Price = 60 },
+                new Item {ItemId = 4, ItemName = "CHLORANTHY RING", CategoryId = 2, Price = 90 },
+                new Item {ItemId = 5, ItemName = "CROWN OF DUSK", CategoryId = 2, Price = 120 }
             }.AsQueryable());
             logic = new ItemLogic(mockItemRepo.Object);
         }
-        [Test]
+
+
+    [Test]
         public void ItemCreateTestNameIncorrect()
         {
             var item = new Item() { ItemName = "a" };

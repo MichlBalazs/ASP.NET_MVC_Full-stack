@@ -49,29 +49,8 @@ namespace GG1RKK_HFT_2023241.Logic.Classes
         {
             repo.Update(adventurer);
         }
-        public IEnumerable<object> GetAdventurerCountWithOrders()
-        {
-            return repo.ReadAll()
-                .Select(adventurer => new
-                {
-                    AdventurerName = adventurer.AdventurerName,
-                    OrderCount = repo.ReadAll().Count(order => order.AdventurerId == adventurer.AdventurerId)
-                });
-        }
-        public IEnumerable<object> GetAdventurersWithOrders()
-        {
-            return repo.ReadAll()
-                .Where(adventurer => adventurer.Orders.Any())
-                .Select(adventurer => new
-                {
-                    AdventurerName = adventurer.AdventurerName,
-                    Orders = adventurer.Orders.Select(order => new
-                    {
-                        OrderId = order.OrderId,
-                        ItemName = order.Item.ItemName
-                    })
-                });
-        }
+        
+        
 
     }
 }
