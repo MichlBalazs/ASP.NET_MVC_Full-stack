@@ -49,10 +49,10 @@ namespace GG1RKK_HFT_2023241.Logic.Classes
             repo.Update(order);
         }
 
-        public IEnumerable<object> GetOrdersWithItemDetails()
+        public IEnumerable<OrderDetails> GetOrdersWithDetails()
         {
             return repo.ReadAll()
-                .Select(order => new
+                .Select(order => new OrderDetails
                 {
                     AdventurerName = order.Adventurer.AdventurerName,
                     ItemName = order.Item.ItemName,
@@ -60,5 +60,17 @@ namespace GG1RKK_HFT_2023241.Logic.Classes
                 });
         }
 
+    }
+
+    public class OrderDetails
+    {
+        public string AdventurerName { get; set; }
+        public string ItemName { get; set; }
+        public int ItemPrice { get; set; }
+        public override bool Equals(object obj)
+        {
+            OrderDetails o = obj as OrderDetails;
+            return this.AdventurerName == o.AdventurerName && this.ItemName == o.AdventurerName && this.ItemPrice == o.ItemPrice;
+        }
     }
 }

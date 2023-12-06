@@ -53,27 +53,28 @@ namespace GG1RKK_HFT_2023241.Repository.Database
 
             modelBuilder.Entity<Adventurer>().HasData(new Adventurer[]
             {
-                new Adventurer { AdventurerId = 1, AdventurerName = "Jake the Dog", Class = "Druid", Level = 5 },
-                new Adventurer { AdventurerId = 2, AdventurerName = "Elena Swiftblade", Class = "Rogue", Level = 12 },
-                new Adventurer { AdventurerId = 3, AdventurerName = "Finn the Human", Class = "Fighter", Level = 10 },
-                new Adventurer { AdventurerId = 4, AdventurerName = "Sir Gareth Ironheart", Class = "Fighter", Level = 10 },
-                new Adventurer { AdventurerId = 5, AdventurerName = "Lyria Moonshadow", Class = "Fighter", Level = 10 },
+                new Adventurer { AdventurerId = 1, AdventurerName = "Jake the Dog", Class = "Bro", Level = 5 },
+                new Adventurer { AdventurerId = 3, AdventurerName = "Elena Swiftblade", Class = "Rogue", Level = 12 },
+                new Adventurer { AdventurerId = 2, AdventurerName = "Finn the Human", Class = "Bro", Level = 5 },
+                new Adventurer { AdventurerId = 4, AdventurerName = "Sir Gareth Ironheart", Class = "Paladin", Level = 18 },
+                new Adventurer { AdventurerId = 5, AdventurerName = "Lyria Moonshadow", Class = "Ranger", Level = 9 },
                 new Adventurer { AdventurerId = 6, AdventurerName = "Thorin Stoneshield", Class = "Fighter", Level = 10 },
-                new Adventurer { AdventurerId = 7, AdventurerName = "Luna Silverwind", Class = "Fighter", Level = 10 },
-                new Adventurer { AdventurerId = 8, AdventurerName = "Aria Lightbringer", Class = "Fighter", Level = 10 },
-                new Adventurer { AdventurerId = 9, AdventurerName = "Grimm Blackthorn", Class = "Fighter", Level = 10 },
-                new Adventurer { AdventurerId = 10, AdventurerName = "Morgana Shadowbane", Class = "Fighter", Level = 10 },
-                new Adventurer { AdventurerId = 11, AdventurerName = "Brutus Ironfist", Class = "Fighter", Level = 10 },
-                new Adventurer { AdventurerId = 12, AdventurerName = "Seraphina Frostheart", Class = "Fighter", Level = 10 },
-                new Adventurer { AdventurerId = 13, AdventurerName = "Kai Swiftstrike", Class = "Fighter", Level = 10 },
-                new Adventurer { AdventurerId = 14, AdventurerName = "Isolde Stormcaller", Class = "Fighter", Level = 10 },
-                new Adventurer { AdventurerId = 15, AdventurerName = "Cassius Darkmoon", Class = "Fighter", Level = 10 },
-                new Adventurer { AdventurerId = 16, AdventurerName = "Faelan Shadowstep", Class = "Fighter", Level = 10 },
-                new Adventurer { AdventurerId = 17, AdventurerName = "Eowyn Stormbringer", Class = "Fighter", Level = 10 },
-                new Adventurer { AdventurerId = 18, AdventurerName = "Aldric Trueheart", Class = "Fighter", Level = 10 },
-                new Adventurer { AdventurerId = 19, AdventurerName = "Elara Emberheart", Class = "Fighter", Level = 10 },
-                new Adventurer { AdventurerId = 20, AdventurerName = "Thrain Thunderaxe", Class = "Fighter", Level = 10 },
-                new Adventurer { AdventurerId = 21, AdventurerName = "Sylas Moonfire", Class = "Fighter", Level = 10 }
+                new Adventurer { AdventurerId = 7, AdventurerName = "Luna Silverwind", Class = "Sorcerer", Level = 3 },
+                new Adventurer { AdventurerId = 8, AdventurerName = "Aria Lightbringer", Class = "Cleric", Level = 13 },
+                new Adventurer { AdventurerId = 9, AdventurerName = "Grimm Blackthorn", Class = "Barbarian", Level = 7 },
+                new Adventurer { AdventurerId = 10, AdventurerName = "Morgana Shadowbane", Class = "Warlock", Level = 19 },
+                new Adventurer { AdventurerId = 11, AdventurerName = "Brutus Ironfist", Class = "Fighter", Level = 6 },
+                new Adventurer { AdventurerId = 12, AdventurerName = "Seraphina Frostheart", Class = "Wizard", Level = 15 },
+                new Adventurer { AdventurerId = 13, AdventurerName = "Kai Swiftstrike", Class = "Monk", Level = 11 },
+                new Adventurer { AdventurerId = 14, AdventurerName = "Isolde Stormcaller", Class = "Sorcerer", Level = 17 },
+                new Adventurer { AdventurerId = 15, AdventurerName = "Cassius Darkmoon", Class = "Bard", Level = 5 },
+                new Adventurer { AdventurerId = 16, AdventurerName = "Faelan Shadowstep", Class = "Rogue", Level = 14 },
+                new Adventurer { AdventurerId = 17, AdventurerName = "Eowyn Stormbringer", Class = "Fighter", Level = 20 },
+                new Adventurer { AdventurerId = 18, AdventurerName = "Aldric Trueheart", Class = "Paladin", Level = 8 },
+                new Adventurer { AdventurerId = 19, AdventurerName = "Elara Emberheart", Class = "Sorcerer", Level = 4 },
+                new Adventurer { AdventurerId = 20, AdventurerName = "Thrain Thunderaxe", Class = "Barbarian", Level = 16 },
+                new Adventurer { AdventurerId = 21, AdventurerName = "Sylas Moonfire", Class = "Druid", Level = 14 }
+
             });
 
 

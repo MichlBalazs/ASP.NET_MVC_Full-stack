@@ -93,7 +93,8 @@ namespace GG1RKK_HFT_2023241.Client
 
         static void Main(string[] args)
         {
-            //http://localhost:4112
+
+            rest = new RestService("http://localhost:4112/", "shop");
         }
     }
 }

@@ -3,7 +3,6 @@ using GG1RKK_HFT_2023241.Logic.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace GG1RKK_HFT_202324.Endpoint.Controllers
 {

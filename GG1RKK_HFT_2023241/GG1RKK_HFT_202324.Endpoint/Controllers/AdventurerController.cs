@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace GG1RKK_HFT_202324.Endpoint.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class AdventurerController : ControllerBase
     {
