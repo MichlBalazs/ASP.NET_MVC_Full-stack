@@ -47,5 +47,11 @@ namespace GG1RKK_HFT_202324.Endpoint.Controllers
         {
             this.logic.Delete(id);
         }
+
+        [HttpGet("GetItemsNumberInCategory")]
+        public int GetItemsNumberInCategory(string category)
+        {
+            return this.logic.GetItemsNumberInCategory(category);
+        }
     }
 }

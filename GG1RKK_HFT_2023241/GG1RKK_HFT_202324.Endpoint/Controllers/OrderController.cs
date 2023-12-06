@@ -46,5 +46,26 @@ namespace GG1RKK_HFT_202324.Endpoint.Controllers
         {
             this.logic.Delete(id);
         }
+        [HttpGet("OrderCount")]
+        public int OrderCount(int AdventurerId)
+        {
+            return this.logic.OrderCount(AdventurerId);
+        }
+
+        [HttpGet("OrderedItemsCategory")]
+        public int OrderedItemsCategory(int OrderId)
+        {
+            return this.logic.OrderedItemsCategory(OrderId);
+        }
+        [HttpGet("OrderedItemsAvgPrice")]
+        public double OrderedItemsAvgPrice()
+        {
+            return this.logic.OrderedItemsAvgPrice();
+        }
+        [HttpGet("WhoBoughtThisItem")]
+        public string WhoBoughtThisItem(int itemId)
+        {
+            return this.logic.WhoBoughtThisItem(itemId);
+        }
     }
 }
