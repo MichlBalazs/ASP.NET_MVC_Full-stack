@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Collections;
 using GG1RKK_HFT_202324.Models;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace GG1RKK_HFT_2023241.Repository.Database
 {
@@ -19,8 +20,8 @@ namespace GG1RKK_HFT_2023241.Repository.Database
         public string Class { get; set; }
         [Range(1,20)]
         public int Level { get; set; }
-
-        public ICollection<Order> Orders { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<Order> Orders { get; set; }
         public Adventurer()
         {
                 

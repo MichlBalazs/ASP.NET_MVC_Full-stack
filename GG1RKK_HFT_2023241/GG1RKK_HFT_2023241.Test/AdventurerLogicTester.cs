@@ -1,5 +1,6 @@
 ﻿using GG1RKK_HFT_202324.Models;
 using GG1RKK_HFT_2023241.Logic.Classes;
+using GG1RKK_HFT_2023241.Logic.Interfaces;
 using GG1RKK_HFT_2023241.Repository.Database;
 using GG1RKK_HFT_2023241.Repository.Interface;
 using Moq;
@@ -13,7 +14,8 @@ namespace GG1RKK_HFT_2023241.Test
     [TestFixture]
     public class AdventurerLogicTester
     {
-        AdventurerLogic logic;
+
+        IAdventurerLogic logic;
         Mock<IRepository<Adventurer>> mockAdventurerRepo;
 
         [SetUp]

@@ -1,5 +1,6 @@
 ﻿using GG1RKK_HFT_202324.Models;
 using GG1RKK_HFT_2023241.Logic.Classes;
+using GG1RKK_HFT_2023241.Logic.Interfaces;
 using GG1RKK_HFT_2023241.Repository.Database;
 using GG1RKK_HFT_2023241.Repository.Interface;
 using Moq;
@@ -15,7 +16,7 @@ namespace GG1RKK_HFT_2023241.Test
     [TestFixture]
     public class ItemLogicTester
     {
-        ItemLogic logic;
+        IItemLogic logic;
         Mock<IRepository<Item>> mockItemRepo;
         [SetUp]
         public void Init()
