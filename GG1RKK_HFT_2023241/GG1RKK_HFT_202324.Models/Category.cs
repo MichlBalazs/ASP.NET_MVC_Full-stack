@@ -18,6 +18,7 @@ namespace GG1RKK_HFT_202324.Models
         public string CategoryName { get; set; }
         
         public int ItemId { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Item> Items { get; set; }
 
         public Category()
