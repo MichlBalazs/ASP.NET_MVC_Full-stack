@@ -14,7 +14,7 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <ListBox Grid.Column="0" ItemsSource="{Binding Orders}">
+        <ListBox Grid.Column="0" ItemsSource="{Binding Orders}" SelectedItem="{Binding SelectedOrder}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Border BorderBrush="Black" BorderThickness="1">
@@ -35,7 +35,11 @@
                     </Border>
                 </DataTemplate>
             </ListBox.ItemTemplate>
-            
         </ListBox>
+        <StackPanel Grid.Column="1">
+            <Button x:Name="btnCreate" Content="Create new order" Margin="10" FontSize="15" Command="{Binding CreateOrderCommand}"/>
+            <Button x:Name="btnDelete" Content="Delete order" Margin="10" FontSize="15" Command="{Binding DeleteOrderCommand}"/>
+            <Button x:Name="btnUpdate" Content="Update order" Margin="10" FontSize="15" Command="{Binding UpdateOrderCommand}"/>
+        </StackPanel>
     </Grid>
 </Window>

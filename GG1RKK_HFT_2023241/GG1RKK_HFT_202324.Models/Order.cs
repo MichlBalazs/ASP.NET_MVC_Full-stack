@@ -23,5 +23,9 @@ namespace GG1RKK_HFT_202324.Models
         public int ItemId { get; set; }
      
         public virtual Item Item { get; set; }
+        public Order()
+        {
+            
+        }
     }
 }
