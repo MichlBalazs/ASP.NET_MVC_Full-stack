@@ -40,22 +40,20 @@ function createOrder() {
             ItemId: itemId
         })
     })
-        .then(response => {
+        .then(response => response/*{
             if (!response.ok) {
                 throw new Error('Failed to create order');
             }
             return response.json();
-        })
+        }*/)
         .then(data => {
             console.log('Success:', data);
+            getData();
             display();
         })
         .catch(error => {
             console.error('Error:', error);
         });
-    getData();
-    location.reload();
-    display();
 }
 
 
