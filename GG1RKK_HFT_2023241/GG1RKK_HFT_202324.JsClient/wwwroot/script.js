@@ -1,5 +1,5 @@
 ﻿let orders = [];
-
+getData();
 function getData() {
     fetch('http://localhost:4112/order')
         .then(x => x.json())
@@ -8,9 +8,7 @@ function getData() {
             console.log(orders);
             display();
         });
-
 }
-getData();
 function display() {
     let htmlContent = '';
 
@@ -50,14 +48,13 @@ function createOrder() {
         })
         .then(data => {
             console.log('Success:', data);
-            // If needed, perform additional actions after successful creation
-            // For example, you can update the UI to reflect the new order
             display();
         })
         .catch(error => {
             console.error('Error:', error);
         });
     getData();
+    location.reload();
     display();
 }
 
