@@ -69,6 +69,12 @@ namespace GG1RKK_HFT_202324.Endpoint
 
             app.UseAuthorization();
 
+            app.UseCors(x => x
+            .AllowCredentials()
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .WithOrigins("http://localhost:37754"));
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

@@ -13,7 +13,6 @@ namespace GG1RKK_HFT_202324.Models
 
     public class Order
     {
-        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int OrderId { get; set; }
         public int AdventurerId { get; set; }

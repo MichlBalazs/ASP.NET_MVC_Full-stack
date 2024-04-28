@@ -4,10 +4,12 @@ using GG1RKK_HFT_202324.Models;
 using GG1RKK_HFT_2023241.Repository.Database;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace GG1RKK_HFT_2023241.WpfClient
@@ -19,8 +21,26 @@ namespace GG1RKK_HFT_2023241.WpfClient
         public Order SelectedOrder
         {
             get { return selectedOrder; }
-            set { SetProperty(ref selectedOrder,value); }
+            set 
+            { 
+                SetProperty(ref selectedOrder,value);
+                (DeleteOrderCommand as RelayCommand).NotifyCanExecuteChanged();
+                (UpdateOrderCommand as RelayCommand).NotifyCanExecuteChanged();
+            }
         }
+
+        public static bool IsInDesignMode
+        {
+            get
+            {
+                var prop = DesignerProperties.IsInDesignModeProperty;
+                return (bool)DependencyPropertyDescriptor.FromProperty(prop, typeof(FrameworkElement)).Metadata.DefaultValue;
+            }
+        }
+
+        //public int newOrderId { get; set; }
+        //public int newAdventurerId { get; set; }
+        //public int newItemId { get; set; }
 
         public RestCollection<Order> Orders { get; set; }
         //public RestCollection<Item> Items { get; set; }
@@ -32,23 +52,30 @@ namespace GG1RKK_HFT_2023241.WpfClient
         public ICommand UpdateOrderCommand { get; set; }
         public MainWindowViewModell()
         {
-            Orders = new RestCollection<Order>("http://localhost:4112/", "Order");
-            //Items = new RestCollection<Item>("http://localhost:4112/", "Item");
-            //Adventurers = new RestCollection<Adventurer>("http://localhost:4112/", "Adventurer");
-            //Categories = new RestCollection<Category>("http://localhost:4112/", "Category");
+            if (!IsInDesignMode)
+            {
 
-            CreateOrderCommand = new RelayCommand(
-                () => { Orders.Add(new Order() { AdventurerId = 1, ItemId = 20 }); }
-                );
-            DeleteOrderCommand = new RelayCommand(
-                () => { Orders.Delete(SelectedOrder.OrderId); }
-                //,() => { return SelectedOrder != null;} 
-                );
+                Orders = new RestCollection<Order>("http://localhost:4112/", "Order");
+                //Items = new RestCollection<Item>("http://localhost:4112/", "Item");
+                //Adventurers = new RestCollection<Adventurer>("http://localhost:4112/", "Adventurer");
+                //Categories = new RestCollection<Category>("http://localhost:4112/", "Category");
 
-            UpdateOrderCommand = new RelayCommand(
-                () => { Orders.Update(SelectedOrder); }
-                //,() => { return SelectedOrder != null; }
-                );
+                CreateOrderCommand = new RelayCommand(
+                    () => { Orders.Add(new Order() { AdventurerId = 1, ItemId = 1 }); }
+                    );
+                DeleteOrderCommand = new RelayCommand(
+                    () => { Orders.Delete(SelectedOrder.OrderId); }
+                    ,() => { return SelectedOrder != null; }
+                    );
+
+                UpdateOrderCommand = new RelayCommand(
+                    () =>
+                    {
+
+                    }
+                    ,() => { return SelectedOrder != null; }
+                    );
+            }
         }
     }
 }

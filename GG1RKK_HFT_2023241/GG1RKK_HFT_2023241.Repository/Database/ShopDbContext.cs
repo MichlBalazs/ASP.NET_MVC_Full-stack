@@ -40,15 +40,21 @@ namespace GG1RKK_HFT_2023241.Repository.Database
                 .WithMany(a => a.Orders)
                 .HasForeignKey(o => o.AdventurerId);
 
+
             modelBuilder.Entity<Order>()
                 .HasOne(o => o.Item)
                 .WithMany(i => i.Orders)
                 .HasForeignKey(o => o.ItemId);
 
+            modelBuilder.Entity<Order>()
+                .Property(o => o.OrderId)
+                .ValueGeneratedOnAdd();
+
             modelBuilder.Entity<Item>()
             .HasOne(i => i.Category)
             .WithMany(c => c.Items)
             .HasForeignKey(i => i.CategoryId);
+
 
 
             modelBuilder.Entity<Adventurer>().HasData(new Adventurer[]
