@@ -10,11 +10,11 @@
 
     <div id="formdiv">
         <label>Order ID: </label>
-        <input type="text" id="orderId"/>
+        <input type="text" id="orderId" />
         <label>Adventurer ID: </label>
-        <input type="text" id="adventurerId"/>
+        <input type="text" id="adventurerId" />
         <label>Item ID: </label>
-        <input type="text" id="itemId"/>
+        <input type="text" id="itemId" />
         <button type="button" onclick="createOrder()">Add</button>
     </div>
     <table>
@@ -23,12 +23,14 @@
                 <th>ID</th>
                 <th>Adventurer</th>
                 <th>Item</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody id="rows">
         </tbody>
     </table>
-    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

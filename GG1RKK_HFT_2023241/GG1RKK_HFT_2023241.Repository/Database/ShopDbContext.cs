@@ -46,9 +46,6 @@ namespace GG1RKK_HFT_2023241.Repository.Database
                 .WithMany(i => i.Orders)
                 .HasForeignKey(o => o.ItemId);
 
-            modelBuilder.Entity<Order>()
-                .Property(o => o.OrderId)
-                .ValueGeneratedOnAdd();
 
             modelBuilder.Entity<Item>()
             .HasOne(i => i.Category)
