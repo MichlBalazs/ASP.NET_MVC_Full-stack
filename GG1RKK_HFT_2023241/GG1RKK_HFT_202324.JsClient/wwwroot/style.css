@@ -86,6 +86,45 @@ tbody td {
             background-color: #1d2939; /* Darker blue on hover */
         }
 
+
+#updateformdiv {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+    border-radius: 5px;
+}
+
+    #updateformdiv label {
+        display: block;
+        margin-bottom: 5px;
+        color: #4d3319; /* Brownish text color */
+    }
+
+    #updateformdiv input[type="text"] {
+        width: calc(100% - 18px); /* Adjusted width to match table padding */
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd; /* Light gray border */
+        border-radius: 3px;
+        box-sizing: border-box;
+        font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+    }
+
+    #updateformdiv button {
+        background-color: #2c3e50; /* Dark blue background */
+        color: #fff; /* White text color */
+        padding: 10px 20px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        #updateformdiv button:hover {
+            background-color: #1d2939; /* Darker blue on hover */
+        }
+
 #delete-button {
     background-color: #2c3e50; 
     color: #fff; /* White text color */
@@ -94,8 +133,24 @@ tbody td {
     border-radius: 3px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-right: 10px; 
+}
+
+#update-button {
+    background-color: #2c3e50; 
+    color: #fff; /* White text color */
+    padding: 8px 16px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left:10px;
 }
 
 #delete-button:hover {
-        background-color: #c0392b; /* Darker red on hover */
+        background-color: #c0392b;
+}
+
+#update-button:hover {
+    background-color: #27ae60;
 }

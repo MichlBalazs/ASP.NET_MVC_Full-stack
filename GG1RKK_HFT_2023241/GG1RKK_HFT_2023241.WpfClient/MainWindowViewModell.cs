@@ -55,7 +55,7 @@ namespace GG1RKK_HFT_2023241.WpfClient
             if (!IsInDesignMode)
             {
 
-                Orders = new RestCollection<Order>("http://localhost:4112/", "Order");
+                Orders = new RestCollection<Order>("http://localhost:4112/", "Order", "hub");
                 //Items = new RestCollection<Item>("http://localhost:4112/", "Item");
                 //Adventurers = new RestCollection<Adventurer>("http://localhost:4112/", "Adventurer");
                 //Categories = new RestCollection<Category>("http://localhost:4112/", "Category");
