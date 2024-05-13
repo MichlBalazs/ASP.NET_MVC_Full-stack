@@ -61,7 +61,7 @@ namespace GG1RKK_HFT_2023241.WpfClient
                 //Categories = new RestCollection<Category>("http://localhost:4112/", "Category");
 
                 CreateOrderCommand = new RelayCommand(
-                    () => { Orders.Add(new Order() { AdventurerId = 1, ItemId = 1 }); }
+                    () => { Orders.Add(new Order() { OrderId = SelectedOrder.OrderId, AdventurerId = SelectedOrder.AdventurerId, ItemId = SelectedOrder.ItemId }); }
                     );
                 DeleteOrderCommand = new RelayCommand(
                     () => { Orders.Delete(SelectedOrder.OrderId); }
@@ -71,7 +71,9 @@ namespace GG1RKK_HFT_2023241.WpfClient
                 UpdateOrderCommand = new RelayCommand(
                     () =>
                     {
-
+                        int id = SelectedOrder.OrderId;
+                        Orders.Delete(SelectedOrder.OrderId);
+                        Orders.Add(new Order() { OrderId = id,  AdventurerId = SelectedOrder.AdventurerId, ItemId = SelectedOrder.ItemId });
                     }
                     ,() => { return SelectedOrder != null; }
                     );
