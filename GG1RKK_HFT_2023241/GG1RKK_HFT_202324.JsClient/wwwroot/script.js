@@ -75,20 +75,8 @@ function createOrder() {
             AdventurerId: adventurerId,
             ItemId: itemId
         })
-    })
-        .then(response => response/*{
-            if (!response.ok) {
-                throw new Error('Failed to create order');
-            }
-            return response.json();
-        }*/)
-        .then(data => {
-            console.log('Success:', data);
-            getData();
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+    });
+    getData();
 }
 
 function updateOrder() {
@@ -96,8 +84,14 @@ function updateOrder() {
     let itemId = document.getElementById('itemIdtoupdate').value;
     let orderId = document.getElementById('orderIdtoupdate').value;
 
+    fetch('http://localhost:4112/order/' + orderId, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json', },
+        body: null
+    });
+
     fetch('http://localhost:4112/order', {
-        method: 'PUT',
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
@@ -106,20 +100,10 @@ function updateOrder() {
             AdventurerId: adventurerId,
             ItemId: itemId
         })
-    })
-        .then(response => response/*{
-            if (!response.ok) {
-                throw new Error('Failed to create order');
-            }
-            return response.json();
-        }*/)
-        .then(data => {
-            console.log('Success:', data);
-            getData();
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+    });
+
+    getData();
+    location.reload();
 }
 
 function removeOrder(id) {
@@ -127,14 +111,9 @@ function removeOrder(id) {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json', },
         body: null
-    })
-        .then(response => response)
-        .then(data => {
-            console.log('Success:', data);
-            location.reload(); //not a good solution but works
-            getdata(); //this worked properly in createOrder but not here for some reason
-        })
-        .catch((error) => { console.error('Error:', error); });
+    });
+    getData();
+    location.reload();
 }
 
 function showupdateOrder(id) {
