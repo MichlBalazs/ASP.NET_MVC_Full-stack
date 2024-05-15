@@ -28,6 +28,38 @@ namespace GG1RKK_HFT_2023241.WpfClient
                 (UpdateOrderCommand as RelayCommand).NotifyCanExecuteChanged();
             }
         }
+        private int _newOrderId;
+        public int NewOrderId
+        {
+            get { return _newOrderId; }
+            set
+            {
+                _newOrderId = value;
+                OnPropertyChanged(nameof(NewOrderId)); // Notify property changed
+            }
+        }
+
+        private int _newAdventurerId;
+        public int NewAdventurerId
+        {
+            get { return _newAdventurerId; }
+            set
+            {
+                _newAdventurerId = value;
+                OnPropertyChanged(nameof(NewAdventurerId));
+            }
+        }
+
+        private int _newItemId;
+        public int NewItemId
+        {
+            get { return _newItemId; }
+            set
+            {
+                _newItemId = value;
+                OnPropertyChanged(nameof(NewItemId));
+            }
+        }
 
         public static bool IsInDesignMode
         {
@@ -38,14 +70,10 @@ namespace GG1RKK_HFT_2023241.WpfClient
             }
         }
 
-        //public int newOrderId { get; set; }
-        //public int newAdventurerId { get; set; }
-        //public int newItemId { get; set; }
-
         public RestCollection<Order> Orders { get; set; }
-        //public RestCollection<Item> Items { get; set; }
-        //public RestCollection<Adventurer> Adventurers { get; set; }
-        //public RestCollection<Category> Categories { get; set; }
+        public RestCollection<Item> Items { get; set; }
+        public RestCollection<Adventurer> Adventurers { get; set; }
+        public RestCollection<Category> Categories { get; set; }
 
         public ICommand CreateOrderCommand { get; set; }
         public ICommand DeleteOrderCommand { get; set; }
@@ -56,24 +84,36 @@ namespace GG1RKK_HFT_2023241.WpfClient
             {
 
                 Orders = new RestCollection<Order>("http://localhost:4112/", "Order", "hub");
-                //Items = new RestCollection<Item>("http://localhost:4112/", "Item");
-                //Adventurers = new RestCollection<Adventurer>("http://localhost:4112/", "Adventurer");
-                //Categories = new RestCollection<Category>("http://localhost:4112/", "Category");
+                Items = new RestCollection<Item>("http://localhost:4112/", "Item", "hub");
+                Adventurers = new RestCollection<Adventurer>("http://localhost:4112/", "Adventurer", "hub");
+                Categories = new RestCollection<Category>("http://localhost:4112/", "Category", "hub");
 
                 CreateOrderCommand = new RelayCommand(
-                    () => { Orders.Add(new Order() { OrderId = SelectedOrder.OrderId, AdventurerId = SelectedOrder.AdventurerId, ItemId = SelectedOrder.ItemId }); }
-                    );
+                    () => {
+                        Adventurer newOrderAdventurer = Adventurers.Where(t => t.AdventurerId == NewAdventurerId).First();
+                        Item newOrderItem = Items.Where(t => t.ItemId == NewItemId).First();
+                        Order newOrder = new Order()
+                        {
+                            OrderId = NewOrderId,
+                            AdventurerId = NewAdventurerId,
+                            Adventurer = newOrderAdventurer,
+                            ItemId = NewItemId,
+                            Item = newOrderItem
+                        };
+                        Orders.Add(newOrder); 
+                    });
+
+
                 DeleteOrderCommand = new RelayCommand(
                     () => { Orders.Delete(SelectedOrder.OrderId); }
                     ,() => { return SelectedOrder != null; }
                     );
 
+
                 UpdateOrderCommand = new RelayCommand(
                     () =>
                     {
-                        int id = SelectedOrder.OrderId;
-                        Orders.Delete(SelectedOrder.OrderId);
-                        Orders.Add(new Order() { OrderId = id,  AdventurerId = SelectedOrder.AdventurerId, ItemId = SelectedOrder.ItemId });
+                        Orders.Update(SelectedOrder);
                     }
                     ,() => { return SelectedOrder != null; }
                     );

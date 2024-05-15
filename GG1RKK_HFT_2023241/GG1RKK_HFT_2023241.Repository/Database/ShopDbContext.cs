@@ -32,25 +32,28 @@ namespace GG1RKK_HFT_2023241.Repository.Database
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
-            modelBuilder.Entity<Order>()
-                .HasKey(o => new { o.AdventurerId, o.ItemId });
+            //modelBuilder.Entity<Order>()
+            //    .HasKey(o => new { o.AdventurerId, o.ItemId });
 
             modelBuilder.Entity<Order>()
                 .HasOne(o => o.Adventurer)
                 .WithMany(a => a.Orders)
-                .HasForeignKey(o => o.AdventurerId);
+                //.HasForeignKey(o => o.AdventurerId)
+                ;
 
 
             modelBuilder.Entity<Order>()
                 .HasOne(o => o.Item)
                 .WithMany(i => i.Orders)
-                .HasForeignKey(o => o.ItemId);
+                //.HasForeignKey(o => o.ItemId)
+                ;
 
 
             modelBuilder.Entity<Item>()
             .HasOne(i => i.Category)
             .WithMany(c => c.Items)
-            .HasForeignKey(i => i.CategoryId);
+            //.HasForeignKey(i => i.CategoryId)
+            ;
 
 
 
