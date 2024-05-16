@@ -10,7 +10,6 @@ namespace GG1RKK_HFT_2023241.Repository.Database
     public class Adventurer
     {
         [Key]
-
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int AdventurerId { get; set; }
 

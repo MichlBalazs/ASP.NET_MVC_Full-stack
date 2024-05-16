@@ -35,32 +35,17 @@
                 </ListBox.ItemTemplate>
             </ListBox>
 
-        <!--<DataGrid x:Name="DataGridOrders" AutoGenerateColumns="False" 
-                  ItemsSource="{Binding Orders}" 
-                  SelectedItem="{Binding SelectedOrder, Mode=TwoWay}"
-                  IsReadOnly="False"
-                  Margin="10">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding OrderId}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Adventurer" Binding="{Binding Adventurer.AdventurerName}"/>
-                <DataGridTextColumn Header="Item" Binding="{Binding Item.ItemName}"/>
-            </DataGrid.Columns>
-        </DataGrid>-->
-
-        
-
         <StackPanel Grid.Column="1">
             <StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0 5">
-                    <TextBlock Text="New Order ID:" VerticalAlignment="Center" Margin="0 0 5 0"/>
-                    <TextBox Text="{Binding NewOrderId}"/>
+                    <TextBlock Text="Create new order:" VerticalAlignment="Center" Margin="0 0 5 0"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0 5">
-                    <TextBlock Text="New Adventurer ID:" VerticalAlignment="Center" Margin="0 0 5 0"/>
+                    <TextBlock Text="Adventurer ID:" VerticalAlignment="Center" Margin="0 0 5 0"/>
                     <TextBox Text="{Binding NewAdventurerId}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0 5">
-                    <TextBlock Text="New Item ID:" VerticalAlignment="Center" Margin="0 0 5 0"/>
+                    <TextBlock Text="Item ID:" VerticalAlignment="Center" Margin="0 0 5 0"/>
                     <TextBox Text="{Binding NewItemId}"/>
                 </StackPanel>
             </StackPanel>
@@ -70,8 +55,7 @@
 
             <StackPanel HorizontalAlignment="Stretch">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
-                    <Label Content="ID:"/>
-                    <TextBox x:Name="updatedOrderId" Text="{Binding SelectedOrder.OrderId, Mode=TwoWay}"/>
+                    <Label Content="Update order"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                     <TextBox x:Name="updatedAdventurerId" Text="{Binding SelectedOrder.AdventurerId, Mode=TwoWay}"/>

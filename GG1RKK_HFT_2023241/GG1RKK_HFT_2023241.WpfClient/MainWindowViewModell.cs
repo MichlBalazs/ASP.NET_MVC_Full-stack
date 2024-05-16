@@ -78,6 +78,14 @@ namespace GG1RKK_HFT_2023241.WpfClient
         public ICommand CreateOrderCommand { get; set; }
         public ICommand DeleteOrderCommand { get; set; }
         public ICommand UpdateOrderCommand { get; set; }
+
+        private void RefreshOrders()
+        {
+            var tempOrders = Orders;
+            Orders = null;
+            Orders = tempOrders;
+        }
+
         public MainWindowViewModell()
         {
             if (!IsInDesignMode)
@@ -94,13 +102,13 @@ namespace GG1RKK_HFT_2023241.WpfClient
                         Item newOrderItem = Items.Where(t => t.ItemId == NewItemId).First();
                         Order newOrder = new Order()
                         {
-                            OrderId = NewOrderId,
+                            //OrderId = NewOrderId,
                             AdventurerId = NewAdventurerId,
                             Adventurer = newOrderAdventurer,
                             ItemId = NewItemId,
                             Item = newOrderItem
                         };
-                        Orders.Add(newOrder); 
+                        Orders.Add(newOrder);
                     });
 
 
