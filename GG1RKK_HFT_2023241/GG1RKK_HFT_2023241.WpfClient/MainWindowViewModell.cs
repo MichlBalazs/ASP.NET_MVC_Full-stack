@@ -16,29 +16,8 @@ namespace GG1RKK_HFT_2023241.WpfClient
 {
     public class MainWindowViewModell :ObservableRecipient
     {
-        private Order selectedOrder;
 
-        public Order SelectedOrder
-        {
-            get { return selectedOrder; }
-            set 
-            { 
-                SetProperty(ref selectedOrder,value);
-                (DeleteOrderCommand as RelayCommand).NotifyCanExecuteChanged();
-                (UpdateOrderCommand as RelayCommand).NotifyCanExecuteChanged();
-            }
-        }
-        private int _newOrderId;
-        public int NewOrderId
-        {
-            get { return _newOrderId; }
-            set
-            {
-                _newOrderId = value;
-                OnPropertyChanged(nameof(NewOrderId)); // Notify property changed
-            }
-        }
-
+        #region NewProperties
         private int _newAdventurerId;
         public int NewAdventurerId
         {
@@ -61,6 +40,64 @@ namespace GG1RKK_HFT_2023241.WpfClient
             }
         }
 
+        private string _advNewAdventurerName;
+        public string AdvNewAdventurerName
+        {
+            get { return _advNewAdventurerName; }
+            set
+            {
+                _advNewAdventurerName = value;
+                OnPropertyChanged(nameof(AdvNewAdventurerName));
+            }
+        }
+
+
+        #endregion
+        #region Selected
+        private Order selectedOrder;
+        private Adventurer selectedAdventurer;
+        private Item selectedItem;
+        private Category selectedCategory;
+        public Order SelectedOrder
+        {
+            get { return selectedOrder; }
+            set
+            {
+                SetProperty(ref selectedOrder, value);
+                (DeleteOrderCommand as RelayCommand).NotifyCanExecuteChanged();
+                (UpdateOrderCommand as RelayCommand).NotifyCanExecuteChanged();
+            }
+        }
+
+        public Adventurer SelectedAdventurer
+        {
+            get { return selectedAdventurer; }
+            set {
+                SetProperty(ref selectedAdventurer, value);
+                (DeleteAdventurerCommand as RelayCommand).NotifyCanExecuteChanged();
+                (UpdateAdventurerCommand as RelayCommand).NotifyCanExecuteChanged();
+            }
+        }
+        public Item SelectedItem
+        {
+            get { return selectedItem; }
+            set {
+                SetProperty(ref selectedItem, value);
+                (DeleteItemCommand as RelayCommand).NotifyCanExecuteChanged();
+                (UpdateItemCommand as RelayCommand).NotifyCanExecuteChanged();
+            }
+        }
+        public Category SelectedCategory
+        {
+            get { return selectedCategory; }
+            set {
+                SetProperty(ref selectedCategory, value);
+                (DeleteCategoryCommand as RelayCommand).NotifyCanExecuteChanged();
+                (UpdateCategoryCommand as RelayCommand).NotifyCanExecuteChanged();
+            }
+        }
+        #endregion
+
         public static bool IsInDesignMode
         {
             get
@@ -70,6 +107,7 @@ namespace GG1RKK_HFT_2023241.WpfClient
             }
         }
 
+        #region RestCollections&ICommands
         public RestCollection<Order> Orders { get; set; }
         public RestCollection<Item> Items { get; set; }
         public RestCollection<Adventurer> Adventurers { get; set; }
@@ -79,12 +117,19 @@ namespace GG1RKK_HFT_2023241.WpfClient
         public ICommand DeleteOrderCommand { get; set; }
         public ICommand UpdateOrderCommand { get; set; }
 
-        private void RefreshOrders()
-        {
-            var tempOrders = Orders;
-            Orders = null;
-            Orders = tempOrders;
-        }
+        public ICommand CreateItemCommand { get; set; }
+        public ICommand DeleteItemCommand { get; set; }
+        public ICommand UpdateItemCommand { get; set; }
+
+        public ICommand CreateAdventurerCommand { get; set; }
+        public ICommand DeleteAdventurerCommand { get; set; }
+        public ICommand UpdateAdventurerCommand { get; set; }
+
+        public ICommand CreateCategoryCommand { get; set; }
+        public ICommand DeleteCategoryCommand { get; set; }
+        public ICommand UpdateCategoryCommand { get; set; }
+        #endregion
+
 
         public MainWindowViewModell()
         {
@@ -96,6 +141,7 @@ namespace GG1RKK_HFT_2023241.WpfClient
                 Adventurers = new RestCollection<Adventurer>("http://localhost:4112/", "Adventurer", "hub");
                 Categories = new RestCollection<Category>("http://localhost:4112/", "Category", "hub");
 
+                #region OrderRelayCommands
                 CreateOrderCommand = new RelayCommand(
                     () => {
                         Adventurer newOrderAdventurer = Adventurers.Where(t => t.AdventurerId == NewAdventurerId).First();
@@ -125,6 +171,43 @@ namespace GG1RKK_HFT_2023241.WpfClient
                     }
                     ,() => { return SelectedOrder != null; }
                     );
+                #endregion
+
+                #region AdventurerRelayCommands
+
+                CreateAdventurerCommand = new RelayCommand(
+                   () => {
+                       Adventurers.Add(new Adventurer()
+                       {
+                           AdventurerId = 31,
+                           AdventurerName = AdvNewAdventurerName,
+                           Class = "asd",
+                           Orders = null, 
+                           Level = 1
+                           
+                       });
+                   });
+
+
+                DeleteAdventurerCommand = new RelayCommand(
+                    () => { Adventurers.Delete(SelectedAdventurer.AdventurerId); }
+                    , () => { return SelectedAdventurer != null; }
+                    );
+
+
+                UpdateAdventurerCommand = new RelayCommand(
+                    () =>
+                    {
+                        Adventurers.Update(SelectedAdventurer);
+                    }
+                    , () => { return SelectedAdventurer != null; }
+                    );
+
+                #endregion
+                #region ItemRelayCommands
+                #endregion
+                #region CategoryRelayCommands
+                #endregion
             }
         }
     }

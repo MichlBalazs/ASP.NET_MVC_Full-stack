@@ -23,7 +23,7 @@ namespace GG1RKK_HFT_2023241.Repository.ModelRepositories
         public override void Update(Adventurer adventurer)
         {
             var old = Read(adventurer.AdventurerId);
-            foreach (var prop in old.GetType().GetProperties())
+            foreach (var prop in old.GetType().GetProperties().Where(t => t.Name.Contains("Name")))
             {
                 prop.SetValue(old, prop.GetValue(adventurer));
             }
