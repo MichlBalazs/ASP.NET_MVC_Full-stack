@@ -19,14 +19,6 @@ namespace GG1RKK_HFT_2023241.Logic.Classes
 
         public void Create(Adventurer adventurer)
         {
-            if (adventurer.AdventurerName.Length < 3)
-            {
-                throw new ArgumentException("Name is too short");
-            }
-            else if (adventurer.Level < 1 || adventurer.Level > 20)
-            {
-                throw new ArgumentException("Level must be between 1 and 20");
-            }
             repo.Create(adventurer);
         }
 

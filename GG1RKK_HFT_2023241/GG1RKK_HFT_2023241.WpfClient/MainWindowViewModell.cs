@@ -51,6 +51,102 @@ namespace GG1RKK_HFT_2023241.WpfClient
             }
         }
 
+        private int _advNewAdventurerId;
+
+        public int AdvNewAdventurerId
+        {
+            get { return _advNewAdventurerId; }
+            set 
+            {
+                _advNewAdventurerId = value;
+                OnPropertyChanged(nameof(AdvNewAdventurerName));
+            }
+        }
+        private int _advNewAdventurerLevel;
+
+        public int AdvNewAdventurerLevel
+        {
+            get { return _advNewAdventurerLevel; }
+            set 
+            {
+                _advNewAdventurerLevel = value;
+                OnPropertyChanged(nameof(AdvNewAdventurerName));
+            }
+        }
+        private string _advNewAdventurerClass;
+
+        public string AdvNewAdventurerClass
+        {
+            get { return _advNewAdventurerClass; }
+            set 
+            {
+                _advNewAdventurerClass = value;
+                OnPropertyChanged(nameof(AdvNewAdventurerName));
+            }
+        }
+
+
+        private int _itmNewItemId;
+
+        public int ItmNewItemId
+        {
+            get { return _itmNewItemId; }
+            set 
+            {
+                _itmNewItemId = value;
+                OnPropertyChanged(nameof(ItmNewItemId));
+            }
+        }
+
+        private string _itmNewItemName;
+
+        public string ItmNewItemName
+        {
+            get { return _itmNewItemName; }
+            set
+            {
+                _itmNewItemName = value;
+                OnPropertyChanged(nameof(ItmNewItemName));
+            }
+        }
+
+
+        private int _itmNewItemPrice;
+
+        public int ItmNewItemPrice
+        {
+            get { return _itmNewItemPrice; }
+            set
+            {
+                _itmNewItemPrice = value;
+                OnPropertyChanged(nameof(ItmNewItemPrice));
+            }
+        }
+
+        private int _itmNewItemCategoryId;
+
+        public int ItmNewItemCategoryId
+        {
+            get { return _itmNewItemCategoryId; }
+            set
+            {
+                _itmNewItemCategoryId = value;
+                OnPropertyChanged(nameof(ItmNewItemCategoryId));
+            }
+        }
+
+
+        private string _ctgrNewCategoryName;
+
+        public string CtgrNewCategoryName
+        {
+            get { return _ctgrNewCategoryName; }
+            set
+            {
+                _ctgrNewCategoryName = value;
+                OnPropertyChanged(nameof(CtgrNewCategoryName));
+            }
+        }
 
         #endregion
         #region Selected
@@ -172,43 +268,88 @@ namespace GG1RKK_HFT_2023241.WpfClient
                     ,() => { return SelectedOrder != null; }
                     );
                 #endregion
-
                 #region AdventurerRelayCommands
 
                 CreateAdventurerCommand = new RelayCommand(
                    () => {
                        Adventurers.Add(new Adventurer()
                        {
-                           AdventurerId = 31,
+                           AdventurerId = AdvNewAdventurerId,
                            AdventurerName = AdvNewAdventurerName,
-                           Class = "asd",
+                           Class = AdvNewAdventurerClass,
                            Orders = null, 
-                           Level = 1
+                           Level = AdvNewAdventurerLevel
                            
                        });
                    });
 
 
                 DeleteAdventurerCommand = new RelayCommand(
-                    () => { Adventurers.Delete(SelectedAdventurer.AdventurerId); }
-                    , () => { return SelectedAdventurer != null; }
+                    () => { Adventurers.Delete(SelectedAdventurer.AdventurerId); },
+                    () => { return SelectedAdventurer != null; }
                     );
 
 
                 UpdateAdventurerCommand = new RelayCommand(
-                    () =>
-                    {
-                        Adventurers.Update(SelectedAdventurer);
-                    }
-                    , () => { return SelectedAdventurer != null; }
+                    () => { Adventurers.Update(SelectedAdventurer);},
+                    () => { return SelectedAdventurer != null; }
                     );
 
                 #endregion
                 #region ItemRelayCommands
+
+                CreateItemCommand = new RelayCommand(
+                   () => {
+                       Items.Add(new Item()
+                       {
+                           ItemName = ItmNewItemName,
+                           Price = ItmNewItemPrice,
+                           CategoryId = ItmNewItemCategoryId,
+                           Category = Categories.Where(t => t.CategoryId == ItmNewItemCategoryId).First(),
+                           Orders = null
+
+                       });
+                   });
+
+
+                DeleteItemCommand = new RelayCommand(
+                    () => { Items.Delete(SelectedItem.ItemId); },
+                    () => { return SelectedItem != null; }
+                    );
+
+
+                UpdateItemCommand = new RelayCommand(
+                    () => { Items.Update(SelectedItem); },
+                    () => { return SelectedItem != null; }
+                    );
+
                 #endregion
                 #region CategoryRelayCommands
+
+                CreateCategoryCommand = new RelayCommand(
+                   () => {
+                       Categories.Add(new Category()
+                       {
+                           CategoryName = CtgrNewCategoryName
+                       });
+                   });
+
+
+                DeleteCategoryCommand = new RelayCommand(
+                    () => { Categories.Delete(SelectedCategory.CategoryId); },
+                    () => { return SelectedCategory != null; }
+                    );
+
+
+                UpdateCategoryCommand = new RelayCommand(
+                    () => { Categories.Update(SelectedCategory); },
+                    () => { return SelectedCategory != null; }
+                    );
+
                 #endregion
             }
         }
+
+
     }
 }

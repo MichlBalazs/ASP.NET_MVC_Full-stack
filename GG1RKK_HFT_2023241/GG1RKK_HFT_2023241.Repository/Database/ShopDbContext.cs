@@ -36,6 +36,13 @@ namespace GG1RKK_HFT_2023241.Repository.Database
                 .HasOne(o => o.Adventurer)
                 .WithMany(a => a.Orders)
                 .HasForeignKey(o => o.AdventurerId)
+                .OnDelete(DeleteBehavior.Cascade)
+                ;
+
+            modelBuilder.Entity<Adventurer>()
+                .HasMany(o => o.Orders)
+                .WithOne(a => a.Adventurer)
+                .OnDelete(DeleteBehavior.Cascade)
                 ;
 
 
@@ -43,16 +50,28 @@ namespace GG1RKK_HFT_2023241.Repository.Database
                 .HasOne(o => o.Item)
                 .WithMany(i => i.Orders)
                 .HasForeignKey(o => o.ItemId)
+                .OnDelete(DeleteBehavior.Cascade)
+                ;
+
+            modelBuilder.Entity<Item>()
+                .HasMany(o => o.Orders)
+                .WithOne(a => a.Item)
+                .OnDelete(DeleteBehavior.Cascade)
                 ;
 
 
             modelBuilder.Entity<Item>()
-            .HasOne(i => i.Category)
-            .WithMany(c => c.Items)
-            .HasForeignKey(i => i.CategoryId)
-            ;
+                .HasOne(i => i.Category)
+                .WithMany(c => c.Items)
+                .HasForeignKey(i => i.CategoryId)
+                .OnDelete(DeleteBehavior.Cascade)
+                ;
 
-
+            modelBuilder.Entity<Category>()
+                .HasMany(i => i.Items)
+                .WithOne(c => c.Category)
+                .OnDelete(DeleteBehavior.Cascade)
+                ;
 
             modelBuilder.Entity<Adventurer>().HasData(new Adventurer[]
             {

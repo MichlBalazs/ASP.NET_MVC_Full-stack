@@ -84,14 +84,9 @@ function updateOrder() {
     let itemId = document.getElementById('itemIdtoupdate').value;
     let orderId = document.getElementById('orderIdtoupdate').value;
 
-    fetch('http://localhost:4112/order/' + orderId, {
-        method: 'DELETE',
-        headers: { 'Content-Type': 'application/json', },
-        body: null
-    });
 
     fetch('http://localhost:4112/order', {
-        method: 'POST',
+        method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
